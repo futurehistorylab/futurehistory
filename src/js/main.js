@@ -152,12 +152,14 @@ function initVideos() {
     var trigger = $(this).find('.video-trigger');
     var slider = $(this).closest('.project-slider-mobile');
     var isSliding = false;
-    slider.on('beforeChange', function() {
-      isSliding = true;
-    });
-    slider.on('afterChange', function() {
-      isSliding = false;
-    });
+    if ($(window).width() > 768) {
+      slider.on('beforeChange', function() {
+        isSliding = true;
+      });
+      slider.on('afterChange', function() {
+        isSliding = false;
+      });
+    }
     trigger.click(function() {
       if (isSliding) {
         return;
